@@ -34,7 +34,8 @@ async def on_message(message):
     author_messages = {
         496892287473680384: ["Prince Smells","Prince does not own Window"], 
         510637211612479489: ["Steven Hem Chheng does not own a house", "Mongolian"], 
-        337091661228408835: ["hahrahr your mother","White Cat should be CEO"], 
+        337091661228408835: ["hahrahr your mother","White Cat should be CEO"],
+	240974979263496192:[],
     }
 
     if message.author.id == 496892287473680384:
