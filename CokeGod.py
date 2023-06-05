@@ -46,12 +46,19 @@ async def on_message(message):
 	240974979263496192:["harharhar"],
     	}
 
+    	check_messages = {
+        	"ceo":"White Cat CEO",
+        	"har":"Harharharh"
+    	}
     
 	if message.author.id in author_messages:
 		messages = author_messages[message.author.id]
 		selected_message = random.choice(messages)
 		await message.channel.send(selected_message)
-
+	
+	if messages in check)messages:
+		await message.channel.send(check_messages[messages])
+	
 	await client.process_commands(message)
 
 
