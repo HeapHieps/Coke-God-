@@ -25,10 +25,10 @@ async def meoow(ctx, member: discord.Member):
 
 @client.event
 async def on_message(message):
+	messages = message.content.lower() #Will make all receiving messages to be in lowercase 
+	
 	if message.author == client.user:
         	return
-
-	messages = message.content.lower()
 
     	if messages == "meow":
         	await message.channel.send("Meow")
