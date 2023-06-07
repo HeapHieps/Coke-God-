@@ -40,9 +40,9 @@ async def on_message(message):
         await client.process_commands (message)
     
     author_messages = {
-        496892287473680384: ["Prince Smells","Prince does not own Window"], #Prince
-        510637211612479489: ["Steven Hem Chheng does not own a house", "Mongolian"], #Steven
-        337091661228408835: ["hahrahr your mother","White Cat should be CEO"], # Cente
+        496892287473680384: ["Prince Smells","Prince does not own Window"], 
+        510637211612479489: ["Steven Hem Chheng does not own a house", "Mongolian"], 
+        337091661228408835: ["hahrahr your mother","White Cat should be CEO"], 
     }
 
     check_messages = {
