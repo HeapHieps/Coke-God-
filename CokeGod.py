@@ -5,6 +5,7 @@ import random
 client = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 client.dm_messages = True
 
+
 @client.event
 async def on_ready():
     print("Logged in as {0.user}".format(client))
@@ -22,15 +23,22 @@ async def meoow(ctx, member: discord.Member):
 
 	message = await client.wait_for("message", check = check)
 	await member.send(f"{message.content}")
+        
+@client.command()
+async def send_message(ctx):
+    UserID = input("Please Enter Use ID: ")
+    Message = input("Enter your message: ")
+    user = await client.fetch_user(int(UserID))
+    await user.send(Message)
 
 @client.event
 async def on_message(message):
     if message.author == client.user:
         return
     
-    Remessages = message.content.lower() #Will check all messages in lowercase
+    ReMessage = message.content.lower() #Will check all messages in lowercase
 
-    if Remessages == "meow":
+    if ReMessage == "meow":
         await message.channel.send("Meow")
 
     if message.author.id == 496892287473680384:
@@ -54,10 +62,13 @@ async def on_message(message):
         selected_message = random.choice(messages)
         await message.channel.send(selected_message)
 
-    for word in messages.split():
-         if word in check_messages:
+    for word in ReMessage.split():
+        if word in check_messages:
             await message.channel.send(check_messages[word])
-            break
+            break 
+
+    if isinstance(message.channel, discord.DMChannel): #Receive any incoming DMs and prints the contents in console  
+        print(f"{message.author}: {message.content}")
 
     await client.process_commands(message)
 
