@@ -1,10 +1,19 @@
 import discord
 from discord.ext import commands
 import random
+import praw
 
 client = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 client.dm_messages = True
 
+reddit = praw.Reddit(
+    client_id = "em1JwlGKlxJ4ttOZP8rmqg",
+    client_secret ="9nALsAC6CA__6LiuwEyxNE934BN7PQ",
+    username ="hwlloea121",
+    password = "hwlloea123",
+    user_agent = "hwlloea",
+    check_for_async = False
+)
 
 @client.event
 async def on_ready():
@@ -23,7 +32,25 @@ async def meoow(ctx, member: discord.Member):
 
 	message = await client.wait_for("message", check = check)
 	await member.send(f"{message.content}")
-        
+
+	
+@client.command()
+async def meme(ctx):
+    subreddit = reddit.subreddit("comedyheaven")
+    hot = subreddit.hot(limit = 10)
+    all_posts = []
+
+    for post in hot:
+        all_posts.append(post)
+    
+    random_post = random.choice(all_posts)
+
+    PostTitle =  random_post.title
+    url = random_post.url
+    em = discord.Embed(title = PostTitle)
+    em.set_image(url = url)
+    await ctx.send(embed = em)
+
 @client.command()
 async def send_message(ctx):
     UserID = input("Please Enter Use ID: ")
