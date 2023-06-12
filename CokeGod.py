@@ -7,22 +7,24 @@ client = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 client.dm_messages = True
 
 reddit = praw.Reddit(
-    client_id = "em1JwlGKlxJ4ttOZP8rmqg",
-    client_secret ="9nALsAC6CA__6LiuwEyxNE934BN7PQ",
-    username ="hwlloea121",
-    password = "hwlloea123",
-    user_agent = "hwlloea",
+    client_id = "",
+    client_secret ="",
+    username ="",
+    password = "",
+    user_agent = "",
     check_for_async = False
 )
-
+    
 @client.event
 async def on_ready():
     print("Logged in as {0.user}".format(client))
 
-
 @client.command()
-async def ping(ctx, arg):
-    await ctx.send(arg)
+async def letter(ctx, channel_id):
+    channel = client.get_channel(int(channel_id))
+    await ctx.send("guh???")
+    letter = await client.wait_for("message")
+    await channel.send(f"{letter.content}")
 
 @client.command()
 async def meoow(ctx, member: discord.Member):
@@ -33,7 +35,6 @@ async def meoow(ctx, member: discord.Member):
 	message = await client.wait_for("message", check = check)
 	await member.send(f"{message.content}")
 
-	
 @client.command()
 async def meme(ctx):
     subreddit = reddit.subreddit("comedyheaven")
@@ -55,8 +56,15 @@ async def meme(ctx):
 async def send_message(ctx):
     UserID = input("Please Enter Use ID: ")
     Message = input("Enter your message: ")
-    user = await client.fetch_user(int(UserID))
-    await user.send(Message)
+
+    try:
+        user = await client.fetch_user(int(UserID))
+        await user.send(Message)
+        print(f"Message successfully sent to {UserID}")
+    except discord.NotFound:
+        print(f"User not found")
+    except discord.HTTPException: 
+        print(f"Failed to sent message")
 
 @client.event
 async def on_message(message):
@@ -74,9 +82,9 @@ async def on_message(message):
             await message.add_reaction(reaction)
     
     author_messages = {
-        496892287473680384: ["Prince Smells","Prince does not own Window"], 
-        510637211612479489: ["Steven Hem Chheng does not own a house", "Mongolian"], 
-        337091661228408835: ["hahrahr your mother","White Cat should be CEO"], 
+        496892287473680384: ["Prince Smells","Prince does not own Window"], #Prince
+        510637211612479489: ["Steven Hem Chheng does not own a house", "Mongolian"], #Steven
+        337091661228408835: ["hahrahr your mother","White Cat should be CEO"], # Cente
     }
 
     check_messages = {
@@ -84,10 +92,10 @@ async def on_message(message):
         "har":"Harharharh"
     }
 
-    if message.author.id in author_messages:
-        messages = author_messages[message.author.id]
-        selected_message = random.choice(messages)
-        await message.channel.send(selected_message)
+##    if message.author.id in author_messages:
+##        messages = author_messages[message.author.id]
+##        selected_message = random.choice(messages)
+##        await message.channel.send(selected_message)
 
     for word in ReMessage.split():
         if word in check_messages:
