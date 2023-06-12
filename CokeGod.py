@@ -92,10 +92,10 @@ async def on_message(message):
         "har":"Harharharh"
     }
 
-##    if message.author.id in author_messages:
-##        messages = author_messages[message.author.id]
-##        selected_message = random.choice(messages)
-##        await message.channel.send(selected_message)
+    if message.author.id in author_messages:
+        messages = author_messages[message.author.id]
+        selected_message = random.choice(messages)
+        await message.channel.send(selected_message)
 
     for word in ReMessage.split():
         if word in check_messages:
