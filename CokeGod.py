@@ -19,6 +19,8 @@ reddit = praw.Reddit(
 async def on_ready():
     print("Logged in as {0.user}".format(client))
 
+#----------------------Bot Commands-------------------------------------
+
 @client.command()
 async def letter(ctx, channel_id):
     channel = client.get_channel(int(channel_id))
@@ -66,6 +68,8 @@ async def send_message(ctx):
     except discord.HTTPException: 
         print(f"Failed to sent message")
 
+#----------------------Bot Listeners-------------------------------------
+	
 @client.event
 async def on_message(message):
     if message.author == client.user:
