@@ -68,6 +68,11 @@ async def send_message(ctx):
     except discord.HTTPException: 
         print(f"Failed to sent message")
 
+@client.command() #Relocate specific user to another channel    
+async def shoo(ctx, UserID:discord.Member, destination_channel:int):
+    destination_channel = client.get_channel(destination_channel)
+    await UserID.move_to(destination_channel)
+
 #----------------------Bot Listeners-------------------------------------
 	
 @client.event
