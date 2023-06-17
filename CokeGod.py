@@ -116,5 +116,14 @@ async def on_message(message):
 
     await client.process_commands(message)
 
+@client.event
+async def on_voice_state_update(member,before ,after):
+    target_user_id = 496892287473680384  #specific user
+    destination_channel_id = 815079426684878848  # the destination channel
+    sc= before
+    if member.id == target_user_id and after.channel != client.get_channel(destination_channel_id):
+        destination_channel = client.get_channel(destination_channel_id)
+        await member.move_to(destination_channel)
+
 
 client.run("")
