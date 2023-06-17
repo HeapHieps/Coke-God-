@@ -91,9 +91,10 @@ async def on_message(message):
             await message.add_reaction(reaction)
     
     author_messages = {
-        496892287473680384: ["Prince Smells","Prince does not own Window"], #Prince
+        496892287473680384: ["Prince Smells","Prince does not own Windows"], #Prince
         510637211612479489: ["Steven Hem Chheng does not own a house", "Mongolian"], #Steven
-        337091661228408835: ["hahrahr your mother","White Cat should be CEO"], # Cente
+        337091661228408835: ["hahrahr your mother","White Cat should be CEO", "https://media.discordapp.net/attachments/960353238354386975/1109494517280808981/Baked.gif"], # Cente
+        288186865411031040: ["https://media.discordapp.net/attachments/960353238354386975/1109494517280808981/Baked.gif","https://tenor.com/view/bellebows-tiktok-dog-funny-silly-gif-26293491"]
     }
 
     check_messages = {
