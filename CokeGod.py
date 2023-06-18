@@ -68,6 +68,14 @@ async def send_message(ctx):
     except discord.HTTPException: 
         print(f"Failed to sent message")
 
+@client.command()   
+async def fuck_you(ctx, UserID:discord.Member, des):
+    FingerList= ["https://tenor.com/view/fun-middle-finger-selfie-gif-13589115",
+                 "https://cdn.discordapp.com/attachments/1112848103574360095/1118303088776859749/images.png",
+                 "https://tenor.com/view/bocchi-the-rock-kita-the-rock-gif-27462712"]
+    await ctx.message.delete()
+    await ctx.channel.send(f"{ctx.author.mention} says Fuck You {UserID.mention}\n{random.choice(FingerList)}")	
+
 @client.command() #Relocate specific user to another channel    
 async def shoo(ctx, UserID:discord.Member, destination_channel:int):
     destination_channel = client.get_channel(destination_channel)
