@@ -69,7 +69,7 @@ async def send_message(ctx):
         print(f"Failed to sent message")
 
 @client.command()   
-async def fuck_you(ctx, UserID:discord.Member, des):
+async def RAH(ctx, UserID:discord.Member, des):
     FingerList= ["https://tenor.com/view/fun-middle-finger-selfie-gif-13589115",
                  "https://cdn.discordapp.com/attachments/1112848103574360095/1118303088776859749/images.png",
                  "https://tenor.com/view/bocchi-the-rock-kita-the-rock-gif-27462712"]
