@@ -37,6 +37,11 @@ async def meoow(ctx, member: discord.Member):
 	message = await client.wait_for("message", check = check)
 	await member.send(f"{message.content}")
 
+@client.command()#- Purge previous messages
+async def purge(ctx, amount : int):
+    channel = ctx.channel
+    await channel.purge(limit = amount + 1)
+	
 @client.command()
 async def meme(ctx):
     subreddit = reddit.subreddit("comedyheaven")
