@@ -6,7 +6,8 @@ import praw
 client = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 client.dm_messages = True
 
-reddit = praw.Reddit(
+#Reddit application information, needed for some commands to run
+reddit = praw.Reddit( 
     client_id = "",
     client_secret ="",
     username ="",
