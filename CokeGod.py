@@ -29,6 +29,15 @@ async def letter(ctx, channel_id):
     letter = await client.wait_for("message")
     await channel.send(f"{letter.content}")
 
+@client.command()
+async def meoow(ctx, member: discord.Member):
+    await ctx.send("meow?")
+    try:
+        message = await client.wait_for("message", check=lambda m: m.author.id == ctx.author.id, timeout=60)
+        await member.send(f"{message.content}")
+    except asyncio.TimeoutError:
+        await ctx.send("No response received. Timeout reached.")
+
 @client.command()#- Purge previous messages
 async def purge(ctx, amount : int):
     channel = ctx.channel
