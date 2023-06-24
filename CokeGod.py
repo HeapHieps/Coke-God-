@@ -33,7 +33,7 @@ async def letter(ctx, channel_id):
 async def meoow(ctx, member: discord.Member):
     await ctx.send("meow?")
     try:
-        message = await client.wait_for("message", check=lambda m: m.author.id == ctx.author.id, timeout=60)
+        message = await client.wait_for("message", check=lambda message: message.author.id == ctx.author.id, timeout=60)
         await member.send(f"{message.content}")
     except asyncio.TimeoutError:
         await ctx.send("No response received. Timeout reached.")
