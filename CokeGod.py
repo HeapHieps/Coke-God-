@@ -68,11 +68,10 @@ async def send_message(ctx):
     try:
         user = await client.fetch_user(int(UserID))
         await user.send(Message)
-        print(f"Message successfully sent to {UserID}")
     except discord.NotFound:
-        print(f"User not found")
+        await ctx.channel.send("Failure to find User")
     except discord.HTTPException: 
-        print(f"Failed to sent message")
+        await ctx.channel.send("Failure to send message")
 
 @client.command()   
 async def RAH(ctx, UserID:discord.Member, des):
@@ -94,9 +93,9 @@ async def on_message(message):
     if message.author == client.user:
         return
     
-    ReMessage = message.content.lower() #Will check all messages in lowercase
+    Re_Message = message.content.lower() #Will check all messages in lowercase
 
-    if ReMessage == "meow":
+    if Re_Message == "meow":
         await message.channel.send("Meow")
 
     if message.author.id == 496892287473680384:
@@ -121,7 +120,7 @@ async def on_message(message):
         selected_message = random.choice(messages)
         await message.channel.send(selected_message)
 
-    for word in ReMessage.split():
+    for word in Re_Message.split():
         if word in check_messages:
             await message.channel.send(check_messages[word])
             break 
@@ -133,12 +132,12 @@ async def on_message(message):
 
 @client.event
 async def on_voice_state_update(member,before ,after):
-    target_user_id = 496892287473680384  #specific user
-    destination_channel_id = 815079426684878848  # the destination channel
+    User = 496892287473680384  #specific user
+    destination = 815079426684878848  # the destination channel
     sc= before
-    if member.id == target_user_id and after.channel != client.get_channel(destination_channel_id):
-        destination_channel = client.get_channel(destination_channel_id)
-        await member.move_to(destination_channel)
+    if member.id == target_user_id and after.channel != client.get_channel(destination):
+        destination_channel = client.get_channel(destination)
+        await member.move_to(destination)
 
 
 client.run("")
