@@ -85,6 +85,14 @@ async def RAH(ctx, UserID:discord.Member, des):
 async def shoo(ctx, UserID:discord.Member, destination_channel:int):
     destination_channel = client.get_channel(destination_channel)
     await UserID.move_to(destination_channel)
+	
+@client.command() #Show a list of all commands
+async def commands(ctx):
+    commands_list = []
+    for command in client.commands:
+        commands_list.append(command.name)
+    commands_list = "\n!".join(commands_list)
+    await ctx.send(f"Commands: \n!{commands_list}")
 
 #----------------------Bot Listeners-------------------------------------
 	
