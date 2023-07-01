@@ -74,7 +74,7 @@ async def send_message(ctx):
         await ctx.channel.send("Failure to send message")
 
 @client.command()   
-async def RAH(ctx, UserID:discord.Member, des):
+async def insult(ctx, UserID:discord.Member, des):
     FingerList= ["https://tenor.com/view/fun-middle-finger-selfie-gif-13589115",
                  "https://cdn.discordapp.com/attachments/1112848103574360095/1118303088776859749/images.png",
                  "https://tenor.com/view/bocchi-the-rock-kita-the-rock-gif-27462712"]
@@ -132,7 +132,7 @@ async def on_message(message):
         if word in check_messages:
             await message.channel.send(check_messages[word])
             break 
-
+	
     if isinstance(message.channel, discord.DMChannel): #Receive any incoming DMs and prints the contents in console  
         print(f"{message.author}: {message.content}")
 
